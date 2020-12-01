@@ -32,27 +32,28 @@ with open(election_data_csv, newline="") as csvfile:
             candidate_votes[candidate]=0
         candidate_votes[candidate] = candidate_votes[candidate] + 1
 
-print(f"Election Results\n"
-f"-------------------------\n"
-f"Total Votes: {total}\n"
-f"-------------------------")
-
-# Using loop to calculate percent values for each candidate and determine the winning candidate
-for candidate in candidates:
-    votes = candidate_votes[candidate]
-    percent = (votes/total) * 100
-    if votes > election_winner_votes:
-        election_winner_votes = votes
-        winner = candidate
-    print(f"{candidate}: {percent:.3f}% ({votes})")
-print(f"-------------------------\nWinner: {winner}\n-------------------------")
-
 # create an export to txt file for this output "with open (the path)" : 
 # Text file output
-# pypoll_text_file = os.path.join('Analysis', 'pypoll_output_text_file.txt')
-# with open(pypoll_text_file, 'w') as textfile:
-#     textwriter = textfile.write(f'-------------------------\n')
-#     textwriter = textfile.write(f'Total votes {total}\n')
-#     # for x in range(len(candidate_name)):
-#     textwriter = textfile.write(f"{candidate_name}: {percent_candidate_won:.3f}% {votes_received}\n")
-#     textwriter = textfile.write(f"-------------------------\nWinner: {election_winner}\n-------------------------\n")
+pypoll_analysis = os.path.join('Analysis', 'pypoll_analysis.txt')
+with open(pypoll_analysis, 'w') as textfile:
+    textfile.write(f"Election Results\n")
+    textfile.write(f'-------------------------\n')
+    textfile.write(f'Total votes: {total}\n')
+    textfile.write(f'-------------------------\n')
+
+    print(f"Election Results\n"
+    f"-------------------------\n"
+    f"Total Votes: {total}\n"
+    f"-------------------------")
+
+# Using loop to calculate percent values for each candidate and determine the winning candidate
+    for candidate in candidates:
+        votes_received = candidate_votes[candidate]
+        percent_candidate_won = (votes_received/total) * 100
+        if votes_received > election_winner_votes:
+            election_winner_votes = votes_received
+            election_winner = candidate
+        print(f"{candidate}: {percent_candidate_won:.3f}% ({votes_received})")
+        textfile.write(f"{candidate}: {percent_candidate_won:.3f}% ({votes_received})\n")
+    print(f"-------------------------\nWinner: {election_winner}\n-------------------------")
+    textfile.write(f"-------------------------\nWinner: {election_winner}\n-------------------------\n")
