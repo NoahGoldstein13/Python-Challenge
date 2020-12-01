@@ -32,7 +32,6 @@ with open(election_data_csv, newline="") as csvfile:
             candidate_votes[candidate]=0
         candidate_votes[candidate] = candidate_votes[candidate] + 1
 
-# create an export to txt file for this output "with open (the path)" : 
 # Text file output
 pypoll_analysis = os.path.join('Analysis', 'pypoll_analysis.txt')
 with open(pypoll_analysis, 'w') as textfile:
