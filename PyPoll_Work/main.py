@@ -18,12 +18,13 @@ election_winner_votes = 0
 # Beginning of code to determine HW outputs
 with open(election_data_csv, newline="") as csvfile:
    
-    # Split the data on commas
+    # Split the csv on commas
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
    
-    # Code to calculate the total number of votes, set the unique list of 'candidates', 
-    # and create a dictionary for each candidate and their corresponding number of votes
+    # Calculate total number of votes 
+    # Set unique list of 'candidates'
+    # Create dictionary for each candidate and their corresponding number of votes
     for row in csvreader:
         total = total + 1
         candidate = row[2]
@@ -37,7 +38,7 @@ pypoll_analysis = os.path.join('Analysis', 'pypoll_analysis.txt')
 with open(pypoll_analysis, 'w') as textfile:
     textfile.write(f"Election Results\n")
     textfile.write(f'-------------------------\n')
-    textfile.write(f'Total votes: {total}\n')
+    textfile.write(f'Total Votes: {total}\n')
     textfile.write(f'-------------------------\n')
 
     print(f"Election Results\n"

@@ -10,7 +10,7 @@ total_months = 0
 net_ProfitLoss = 0
 prior_month = 0
 
-# Creates a blank list for changes in profits and losses and months
+# Creates blank lists for changes in profits / losses and months
 change_ProfitLoss = []
 months = []
 
@@ -40,7 +40,7 @@ with open(budget_data_csv, newline="") as csvfile:
     # This calulates the average profit / loss across all months
     month_average = sum(change_ProfitLoss)/len(change_ProfitLoss)
     
-    # The following calculates the greatest profit and loss and the corresponding months
+    # The following sets variable values for the greatest profit and loss and the corresponding months
     max_profit = max(change_ProfitLoss)
     max_profit_month = months[change_ProfitLoss.index(max_profit)+1]
 
